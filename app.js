@@ -1,5 +1,16 @@
 const projectName = "[Music Quiz]";
 
+///////////////////////////////////
+//////// Element Constants ////////
+///////////////////////////////////
+// Answer Box
+const answerBox = document.querySelector(".answerBox");
+const albumArt = document.querySelector(".albumArt");
+const songName = document.querySelector(".songName");
+const albumArtist = document.querySelector(".albumArtist");
+const albumName = document.querySelector(".albumName");
+const albumYear = document.querySelector(".albumYear");
+
 //////////////////////////////////
 //////// Audio Visualizer ////////
 //////////////////////////////////
@@ -37,6 +48,9 @@ audio.addEventListener("play", () => {
   // Song Timer
   setTimeout(() => {
     audio.pause();
+    setTimeout(() => {
+      answerBox.style.display = "block";
+    }, 3000);
   }, timerTime * 1000);
 });
 
@@ -53,4 +67,33 @@ playPause.addEventListener("click", () => {
   } else {
     audio.pause();
   }
+});
+
+/////////////////////////////////////////////////////
+//////// jsmediatags // Song Metadata Gabber ////////
+/////////////////////////////////////////////////////
+jsmediatags.read(audio.src, {
+  onSuccess: function (tag) {
+    console.log(tag.tags);
+
+    songName.innerText = tag.tags.title;
+    albumArtist.innerText = tag.tags.artist;
+    albumName.innerText = tag.tags.album;
+    albumYear.innerText = tag.tags.year;
+
+    // Album Art
+    const picture = tag.tags.picture;
+
+    if (picture) {
+      const byteArray = new Uint8Array(picture.data);
+      const blob = new Blob([byteArray], { type: picture.format });
+      const imageUrl = URL.createObjectURL(blob);
+
+      albumArt.style.backgroundImage = `url("${imageUrl}")`;
+    }
+  },
+
+  onError: function (error) {
+    console.error("Could not reead metadata:", error);
+  },
 });

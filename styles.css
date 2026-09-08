@@ -1,5 +1,5 @@
 :root {
-  --accentColor: #1ed760;
+  --accentColor: #a855f7;
   --accentLighter: color-mix(in srgb, var(--accentColor), white 30%);
 }
 
@@ -60,4 +60,75 @@ body {
 
 .playPause:hover {
   border-color: transparent transparent transparent var(--accentLighter);
+}
+
+/*********************/
+/**** Answer Card ****/
+/*********************/
+
+.answerBox {
+  width: 350px;
+  padding: 15px;
+  background: #161616;
+  font-family: sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  display: none;
+
+  /* Optional */
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 25%);
+}
+
+.albumArt {
+  width: 100%;
+  aspect-ratio: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 4px;
+}
+
+.info {
+  padding: 15px 5px 5px;
+  color: white;
+}
+
+.songName {
+  margin: 0;
+  font-size: 1.7rem;
+  line-height: 1.1;
+}
+
+.albumArtist {
+  margin: 5px 0 12px;
+  font-size: 1.1rem;
+}
+
+.albumInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: #999;
+}
+
+.albumInfo p {
+  margin: 0;
+}
+
+.albumName {
+  font-size: 0.85rem;
+}
+
+.albumYear {
+  font-size: 0.75rem;
+}
+
+.separator {
+  font-size: 0.7rem;
 }
