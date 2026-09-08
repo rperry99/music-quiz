@@ -14,3 +14,4 @@ Currently, there are 5 songs from Baroness. These are intended to just be for te
 
 - Added a visualizer for the song that reacts to the current song playing.
 - Add a timer so the song only plays for 10 seconds.
+- Add Custom play/pause button and removed HTML controls for audio.

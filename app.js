@@ -39,3 +39,18 @@ audio.addEventListener("play", () => {
     audio.pause();
   }, timerTime * 1000);
 });
+
+/////////////////////////////////////
+//////// Play / Pause Button ////////
+/////////////////////////////////////
+const playPause = document.querySelector(".playPause");
+
+playPause.addEventListener("click", () => {
+  playPause.classList.toggle("paused");
+
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+});
