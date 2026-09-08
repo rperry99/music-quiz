@@ -24,6 +24,19 @@ const playTime = 3; // in seconds
 // How long you get to guess after the song plays
 const guessTime = 5; // in seconds
 
+///////////////////////////////////////////////////
+//////// Load a Random Song from the start ////////
+///////////////////////////////////////////////////
+
+// This method is temporary. This will need to be reworked once I have access to the local files on my computer.
+const songlist = [
+  "Songs/01 - Bullhead's Psalm.mp3",
+  "Songs/02 - The Sweetest Curse.mp3",
+  "Songs/03 - Jake Leg.mp3",
+  "Songs/04 - Steel That Sleeps the Eye.mp3",
+  "Songs/05 - Swollen and Halo.mp3",
+];
+
 //////////////////////////////////
 //////// Audio Visualizer ////////
 //////////////////////////////////
@@ -82,6 +95,18 @@ playPause.addEventListener("click", () => {
   playPause.classList.toggle("paused");
 
   if (audio.paused) {
+    const randomSong = songlist[randomNumGen(songlist.length)];
+
+    console.log("Song:", randomSong);
+    console.log("Full URL:", new URL(randomSong, window.location.href).href);
+
+    audio.src = randomSong;
+    audio.load();
+
+    audio.play().catch((error) => {
+      console.error("Playback failed:", error);
+    });
+    loadSongMetadata();
     audio.play();
   } else {
     audio.pause();
@@ -91,31 +116,33 @@ playPause.addEventListener("click", () => {
 /////////////////////////////////////////////////////
 //////// jsmediatags // Song Metadata Gabber ////////
 /////////////////////////////////////////////////////
-jsmediatags.read(audio.src, {
-  onSuccess: function (tag) {
-    console.log(tag.tags);
+function loadSongMetadata() {
+  jsmediatags.read(audio.src, {
+    onSuccess: function (tag) {
+      console.log(tag.tags);
 
-    songName.innerText = tag.tags.title;
-    albumArtist.innerText = tag.tags.artist;
-    albumName.innerText = tag.tags.album;
-    albumYear.innerText = tag.tags.year;
+      songName.innerText = tag.tags.title;
+      albumArtist.innerText = tag.tags.artist;
+      albumName.innerText = tag.tags.album;
+      albumYear.innerText = tag.tags.year;
 
-    // Album Art
-    const picture = tag.tags.picture;
+      // Album Art
+      const picture = tag.tags.picture;
 
-    if (picture) {
-      const byteArray = new Uint8Array(picture.data);
-      const blob = new Blob([byteArray], { type: picture.format });
-      const imageUrl = URL.createObjectURL(blob);
+      if (picture) {
+        const byteArray = new Uint8Array(picture.data);
+        const blob = new Blob([byteArray], { type: picture.format });
+        const imageUrl = URL.createObjectURL(blob);
 
-      albumArt.style.backgroundImage = `url("${imageUrl}")`;
-    }
-  },
+        albumArt.style.backgroundImage = `url("${imageUrl}")`;
+      }
+    },
 
-  onError: function (error) {
-    console.error("Could not reead metadata:", error);
-  },
-});
+    onError: function (error) {
+      console.error("Could not reead metadata:", error);
+    },
+  });
+}
 
 /////////////////////////////////
 //////// Countdown Timer ////////
@@ -164,3 +191,11 @@ overlay.addEventListener("click", () => {
     answerBox.style.display = "none";
   }
 });
+
+/////////////////////////////////////////
+//////// Random Number Generator ////////
+/////////////////////////////////////////
+function randomNumGen(max) {
+  const min = 0;
+  return Math.floor(Math.random() * max);
+}
