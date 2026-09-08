@@ -28,6 +28,12 @@ function animate() {
 }
 
 audio.addEventListener("play", () => {
+  const timerTime = 10;
   audioContext.resume();
   animate();
+
+  // Song Timer
+  setTimeout(() => {
+    audio.pause();
+  }, timerTime * 1000);
 });
