@@ -1,0 +1,18 @@
+body {
+  background: #222;
+}
+
+#visualizer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 100px;
+}
+
+.bar {
+  width: 6px;
+  height: 10px;
+  background: #1ed760;
+  border-radius: 3px;
+}
