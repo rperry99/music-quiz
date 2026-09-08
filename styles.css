@@ -132,3 +132,66 @@ body {
 .separator {
   font-size: 0.7rem;
 }
+
+/**********************/
+/*** Countdown Ring ***/
+/**********************/
+.countdown {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.countdownRing {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ringBackground,
+.ringProgress {
+  fill: none;
+  stroke-width: 6;
+}
+
+.ringBackground {
+  stroke: #444;
+}
+
+.ringProgress {
+  stroke: var(--accentColor);
+  stroke-linecap: round;
+
+  /* Circumference of the circle */
+  stroke-dasharray: 283;
+  stroke-dashoffset: 0;
+}
+
+.countdownNumber {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+}
+
+/***************************/
+/*** Transparent Overlay ***/
+/***************************/
+.overlay {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  display: none;
+}

@@ -11,11 +11,25 @@ const albumArtist = document.querySelector(".albumArtist");
 const albumName = document.querySelector(".albumName");
 const albumYear = document.querySelector(".albumYear");
 
+// Countdown Timer
+const countdownTimer = document.querySelector(".countdown");
+const overlay = document.querySelector(".overlay");
+
+//////////////////////////////////
+//////// Various Settings ////////
+//////////////////////////////////
+// How long the song plays
+const playTime = 3; // in seconds
+
+// How long you get to guess after the song plays
+const guessTime = 5; // in seconds
+
 //////////////////////////////////
 //////// Audio Visualizer ////////
 //////////////////////////////////
 const audio = document.querySelector("#quizAudio");
 const bars = document.querySelectorAll(".bar");
+let timerActive = false;
 
 const audioContext = new AudioContext();
 const analyzer = audioContext.createAnalyser();
@@ -41,17 +55,22 @@ function animate() {
 }
 
 audio.addEventListener("play", () => {
-  const timerTime = 10; // In Seconds
   audioContext.resume();
   animate();
 
   // Song Timer
   setTimeout(() => {
     audio.pause();
+    countdownTimer.style.display = "block";
+    timerActive = true;
+    overlay.style.display = "block";
+    startCountdown();
     setTimeout(() => {
       answerBox.style.display = "block";
-    }, 3000);
-  }, timerTime * 1000);
+      countdownTimer.style.display = "none";
+      timerActive = false;
+    }, guessTime * 1000);
+  }, playTime * 1000);
 });
 
 /////////////////////////////////////
@@ -96,4 +115,52 @@ jsmediatags.read(audio.src, {
   onError: function (error) {
     console.error("Could not reead metadata:", error);
   },
+});
+
+/////////////////////////////////
+//////// Countdown Timer ////////
+/////////////////////////////////
+function startCountdown(duration = guessTime) {
+  const number = document.querySelector(".countdownNumber");
+  const ring = document.querySelector(".ringProgress");
+
+  countdownTimer.style.display = "block";
+
+  const circumference = 283;
+
+  let startTime = null;
+
+  function update(timestamp) {
+    if (!startTime) {
+      startTime = timestamp;
+    }
+
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / (duration * 1000), 1);
+
+    // Update number
+    const remaining = Math.ceil(duration - elapsed / 1000);
+    number.textContent = remaining;
+
+    // Deplete ring
+    ring.style.strokeDashoffset = circumference * progress;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      number.textContent = "0";
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+/////////////////////////////////
+//////// Overlay OnClick ////////
+/////////////////////////////////
+overlay.addEventListener("click", () => {
+  if (!timerActive) {
+    overlay.style.display = "none";
+    answerBox.style.display = "none";
+  }
 });

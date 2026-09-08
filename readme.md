@@ -16,3 +16,4 @@ Currently, there are 5 songs from Baroness. These are intended to just be for te
 - Add a timer so the song only plays for 10 seconds.
 - Add Custom play/pause button and removed HTML controls for audio.
 - Add a pop up after 10 seconds that shows the information on the song.
+- Add a countdown timer for the amount of time you get to guess for.
