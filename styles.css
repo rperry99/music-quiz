@@ -1,5 +1,19 @@
 body {
   background: #222;
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+
+/*************************/
+/**** Visualizer Bars ****/
+/*************************/
+.audioBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #visualizer {
@@ -8,6 +22,7 @@ body {
   justify-content: center;
   gap: 4px;
   height: 100px;
+  margin-bottom: 15px;
 }
 
 .bar {

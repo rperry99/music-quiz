@@ -1,6 +1,8 @@
 const projectName = "[Music Quiz]";
 
-// Audio Visualizer
+//////////////////////////////////
+//////// Audio Visualizer ////////
+//////////////////////////////////
 const audio = document.querySelector("#quizAudio");
 const bars = document.querySelectorAll(".bar");
 
@@ -28,7 +30,7 @@ function animate() {
 }
 
 audio.addEventListener("play", () => {
-  const timerTime = 10;
+  const timerTime = 10; // In Seconds
   audioContext.resume();
   animate();
 
