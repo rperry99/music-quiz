@@ -32,11 +32,11 @@ let guessTime = guesstimeInput.value; // in seconds
 
 // This method is temporary. This will need to be reworked once I have access to the local files on my computer.
 const songlist = [
-  "Songs/01 - Bullhead's Psalm.mp3",
-  "Songs/02 - The Sweetest Curse.mp3",
-  "Songs/03 - Jake Leg.mp3",
-  "Songs/04 - Steel That Sleeps the Eye.mp3",
-  "Songs/05 - Swollen and Halo.mp3",
+  "All Music/Baroness/Blue Album/01 - Bullhead's Psalm.mp3",
+  "All Music/Baroness/Blue Album/02 - The Sweetest Curse.mp3",
+  "All Music/Baroness/Blue Album/03 - Jake Leg.mp3",
+  "All Music/Baroness/Blue Album/04 - Steel That Sleeps the Eye.mp3",
+  "All Music/Baroness/Blue Album/05 - Swollen and Halo.mp3",
 ];
 
 //////////////////////////////////
