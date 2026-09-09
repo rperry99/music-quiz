@@ -26,19 +26,6 @@ let playTime = playbackInput.value; // in seconds
 const guesstimeInput = document.querySelector("#guessLength");
 let guessTime = guesstimeInput.value; // in seconds
 
-///////////////////////////////////////////////////
-//////// Load a Random Song from the start ////////
-///////////////////////////////////////////////////
-
-// This method is temporary. This will need to be reworked once I have access to the local files on my computer.
-const songlist = [
-  "All Music/Baroness/Blue Album/01 - Bullhead's Psalm.mp3",
-  "All Music/Baroness/Blue Album/02 - The Sweetest Curse.mp3",
-  "All Music/Baroness/Blue Album/03 - Jake Leg.mp3",
-  "All Music/Baroness/Blue Album/04 - Steel That Sleeps the Eye.mp3",
-  "All Music/Baroness/Blue Album/05 - Swollen and Halo.mp3",
-];
-
 //////////////////////////////////
 //////// Audio Visualizer ////////
 //////////////////////////////////
