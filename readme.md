@@ -26,7 +26,7 @@ Currently, there are 5 songs from Baroness. These are intended to just be for te
 - Updates
   - Added a setting for adjusting the time the song plays.
   - Added a setting for adjusting the time of the guess.
-  - Added additional music to accomodate for future update of being able to find songs from nested folder structure.
-    - Additionally updated the JavaScript to account for this new folder structure. Functionality has not been added yet to go through folders, just updated the hard coded song list to match the file structure and use the same 5 Baroness songs.
+  - Music now can reside within nested folders.
+    - Currently, I have to run `node generateSongList.js` to be able to generate the `songlist.js` file. This `songlist.js` file is the same as the hard-coded array I had in `app.js` just not written by me. **Imporatant:** If I update the folder for the songs, I will need to run `node generateSongList.js` again to update the list of songs.
 - Bug Fixes
   - Fixed play button getting stuck on pause visually.
