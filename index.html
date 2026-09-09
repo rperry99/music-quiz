@@ -53,6 +53,30 @@
       <audio id="quizAudio"></audio>
       <button class="playPause"></button>
 
+      <div class="settingsBox">
+        <div class="setting">
+          <label for="playbackLength">Playback Length (in seconds)</label>
+          <input
+            type="number"
+            id="playbackLength"
+            min="0"
+            max="20"
+            step="1"
+            value="10" />
+        </div>
+        <div class="setting">
+          <label for="guessLength">Guess Length (in seconds)</label>
+          <input
+            type="number"
+            id="guessLength"
+            min="0"
+            max="10"
+            step="1"
+            value="5" />
+        </div>
+        <!-- <div class="nextSong button">New Song</div> -->
+      </div>
+
       <div class="overlay"></div>
       <div class="countdown">
         <svg class="countdownRing" viewBox="0 0 100 100">

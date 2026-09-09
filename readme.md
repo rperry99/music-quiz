@@ -18,3 +18,13 @@ Currently, there are 5 songs from Baroness. These are intended to just be for te
 - Add a pop up after 10 seconds that shows the information on the song. Metadata pulled with `jsmediatags`.
 - Add a countdown timer for the amount of time you get to guess for.
 - A random song is chosen from the song list when play it clicked. (This will be a temporary change).
+
+### 9/9/26
+
+---
+
+- Added a settings section
+  - Added a setting for adjusting the time the song plays.
+  - Added a setting for adjusting the time of the guess.
+- Bug Fixes
+  - Fixed play button getting stuck on pause visually.

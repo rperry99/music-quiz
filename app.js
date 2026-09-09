@@ -15,14 +15,16 @@ const albumYear = document.querySelector(".albumYear");
 const countdownTimer = document.querySelector(".countdown");
 const overlay = document.querySelector(".overlay");
 
-//////////////////////////////////
-//////// Various Settings ////////
-//////////////////////////////////
+////////////////////////////////////////
+//////// Initial setup for game ////////
+////////////////////////////////////////
 // How long the song plays
-const playTime = 3; // in seconds
+const playbackInput = document.querySelector("#playbackLength");
+let playTime = playbackInput.value; // in seconds
 
 // How long you get to guess after the song plays
-const guessTime = 5; // in seconds
+const guesstimeInput = document.querySelector("#guessLength");
+let guessTime = guesstimeInput.value; // in seconds
 
 ///////////////////////////////////////////////////
 //////// Load a Random Song from the start ////////
@@ -74,6 +76,7 @@ audio.addEventListener("play", () => {
   // Song Timer
   setTimeout(() => {
     audio.pause();
+    playPause.classList.remove("paused"); 
     countdownTimer.style.display = "block";
     timerActive = true;
     overlay.style.display = "block";
@@ -199,3 +202,14 @@ function randomNumGen(max) {
   const min = 0;
   return Math.floor(Math.random() * max);
 }
+
+/////////////////////////////////////////////
+//////// Updater for Timing Settings ////////
+/////////////////////////////////////////////
+playbackInput.addEventListener("change", () => {
+  playTime = playbackInput.value;
+})
+
+guesstimeInput.addEventListener("change", () => {
+  guessTime = guesstimeInput.value;
+})
